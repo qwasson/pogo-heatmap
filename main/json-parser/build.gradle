@@ -1,0 +1,6 @@
+dependencies {
+    compile libs.aesJtapi
+    compile libs.commonsCodec
+    compile libs.guava
+    providedCompile libs.slf4j
+}

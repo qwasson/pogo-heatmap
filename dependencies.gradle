@@ -1,0 +1,26 @@
+
+
+ext.libs = [
+
+        commonsCollections:                    'org.apache.commons:commons-collections4:4.0',
+        commonsCodec:                          'commons-codec:commons-codec:1.10',
+        commonsIO:                             'commons-io:commons-io:2.4',
+        commonsLang:                           'commons-lang:commons-lang:2.6',
+        commonsLang3:                          'org.apache.commons:commons-lang3:3.3.2',
+        concurrentlinkedhashmap:               'com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:1.4.2',
+        cucmJtapi:                             'com.cisco:cucm-jtapi:9.1',
+        gson:                                  'com.google.code.gson:gson:2.2.4',
+        guava:                                 'com.google.guava:guava:17.0',
+        hashids:                               'org.hashids:hashids:1.0.1',
+        httpclient:                            'org.apache.httpcomponents:httpclient:4.5.2',
+        jjwt:                                  'io.jsonwebtoken:jjwt:0.6.0',
+        junit:                                 'junit:junit:4.11',
+        mockitoCore:                           'org.mockito:mockito-core:2.0.31-beta',
+        owner:                                 'org.aeonbits.owner:owner:1.0.9',
+        powerMock:                             'org.powermock:powermock-api-mockito:1.6.5',
+        powerMockJUnit:                        'org.powermock:powermock-module-junit4:1.6.5',
+        slf4j:                                 'org.slf4j:slf4j-api:1.7.12',
+        slf4jLog4j:                            'org.slf4j:slf4j-log4j12:1.7.12',
+        slf4jSimple:                           'org.slf4j:slf4j-simple:1.7.12',
+        typesafe:                              'com.typesafe:config:1.2.1'
+]

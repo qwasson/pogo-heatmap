@@ -1,0 +1,78 @@
+ext.baseMavenGroupId = 'com.github.qwasson'
+ext.productLongName = 'PoGo Heatmap'
+
+allprojects {
+    group = baseMavenGroupId
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
+
+    group = project.parent.group + '.' + project.parent.name
+
+    compileJava {
+        options.debug = true
+        options.debugOptions.debugLevel = "source,lines,vars"
+        options.encoding = 'UTF-8'
+    }
+    compileTestJava {
+        options.debugOptions.debugLevel = "source,lines,vars"
+    }
+    javadoc {
+        options.encoding = 'UTF-8'
+    }
+
+    // Clean Eclipse output directory as the Eclipse plugin does not do this by default
+    clean.doFirst {
+        delete 'bin'
+    }
+
+    compileJava.options.debug = true
+    compileJava.options.debugOptions.debugLevel = "source,lines,vars"
+    compileTestJava.options.debugOptions.debugLevel = "source,lines,vars"
+    compileJava.options.encoding = 'UTF-8'
+
+    eclipse {
+        classpath {
+            downloadJavadoc = true
+        downloadSources = true
+        }
+    }
+        
+    test {
+        testLogging {
+            // Make sure we show the full stack trace for test failures
+            exceptionFormat 'full'
+
+            // Make sure the skipped and failed tests are logged
+            events 'skipped', 'failed'
+
+            // Projects may decide to enable extra logging for tests
+            // events 'started', 'passed'         // Log start and passed events
+            // showStandardStreams = true        // Show console output from the running tests
+
+        }
+    }
+    if(System.env['JAVA_HOME'] == null){
+        throw new GradleException('JAVA_HOME not set')
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.12'
+}
+
+def getGitDescribe() {
+    if (!project.hasProperty('gitBin')) {
+        project.ext.set('gitBin', 'git')
+    }
+
+    def cmd = gitBin + " describe --all --long"
+    def proc = cmd.execute()
+    return proc.text.trim()
+}
